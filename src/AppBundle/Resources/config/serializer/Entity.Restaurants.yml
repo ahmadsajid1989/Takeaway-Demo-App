@@ -1,0 +1,12 @@
+AppBundle\Entity\Restaurants:
+  exclusion_policy: none
+  properties:
+
+    created_at:
+      expose: false
+      exclude: true
+
+    updated_at:
+      expose: false
+      exclude: true
+

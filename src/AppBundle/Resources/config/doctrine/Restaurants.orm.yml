@@ -1,0 +1,116 @@
+AppBundle\Entity\Restaurants:
+  type: entity
+  table: restaurants
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  fields:
+    name:
+      type: string
+      length: 124
+      nullable: false
+      index: true
+
+    branch:
+      type: string
+      length: 124
+      nullable: true
+
+    phone:
+      type: bigint
+      length: 10
+      index: true
+      nullable: true
+
+    email:
+      type: string
+      index: true
+      nullable: true
+
+    logo:
+      type: string
+      nullable: true
+
+    address:
+      type: string
+      nullable: true
+
+    housenumber:
+      type: string
+      nullable: true
+
+    postcode:
+      type: string
+      nullable: true
+
+    city:
+      type: string
+      nullable: true
+
+    latitude:
+      type: decimal(18)
+      scale: 12
+      precision: 18
+      nullable: true
+
+    longitude:
+      type: decimal(18)
+      scale: 12
+      precision: 18
+      nullable: true
+
+    url:
+      type: string
+      nullable: true
+
+    open:
+      type: smallint
+      nullable: true
+
+    best_match:
+      type: integer
+      nullable: true
+
+    newest_score:
+      type: integer
+      nullable: true
+
+    rating_average:
+      type: integer
+      nullable: true
+
+    popularity:
+      type: integer
+      nullable: true
+
+    average_product_price:
+      type: decimal
+      scale: 2
+      precision: 4
+      nullable: true
+
+    delivery_costs:
+      type: decimal
+      scale: 2
+      precision: 4
+      nullable: true
+
+    minimum_order_amount:
+      type: decimal
+      scale: 2
+      precision: 4
+      nullable: true
+
+    created_at:
+      type: datetime
+
+    updated_at:
+      type: datetime
+      nullable: true
+
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate:  [ setUpdatedAtValue ]

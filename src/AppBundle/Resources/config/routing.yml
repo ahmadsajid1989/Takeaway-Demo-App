@@ -1,0 +1,4 @@
+_get:
+  path:     /restaurant/
+  defaults: { _controller: AppBundle:Restaurants:get}
+  methods: [GET]
