@@ -17,6 +17,7 @@ use Swagger\Annotations as SWG;
  *
  * @AccessType("public_method")
  * @SWG\Definition()
+ * @codeCoverageIgnore
  */
 class Restaurants
 {

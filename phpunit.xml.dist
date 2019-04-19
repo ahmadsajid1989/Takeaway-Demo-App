@@ -10,10 +10,12 @@
     <php>
         <ini name="error_reporting" value="-1" />
         <server name="KERNEL_CLASS" value="AppKernel" />
+        <env name="TEST_BASE_URL" value="http://127.0.0.1:8000" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="Takeaway Project Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

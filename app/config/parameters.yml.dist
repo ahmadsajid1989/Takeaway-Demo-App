@@ -21,3 +21,10 @@ parameters:
     #CSV Data Directory
 
     data_dir: '%kernel.root_dir%/../data/'
+
+
+    test_database_host: 127.0.0.1
+    test_database_port: null
+    test_database_name: test_db_takeaway
+    test_database_user: root
+    test_database_password:

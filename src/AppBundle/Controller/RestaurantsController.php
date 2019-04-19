@@ -10,7 +10,6 @@ namespace AppBundle\Controller;
 
 
 use FOS\RestBundle\Controller\Annotations\QueryParam;
-use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -19,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Restaurants;
 use Swagger\Annotations as SWG;
-use Symfony\Component\Routing\Annotation\Route;
+
 
 
 /**
@@ -28,7 +27,8 @@ use Symfony\Component\Routing\Annotation\Route;
  * @version 0.0.1
  * @author Ahmad Sajid <ahmadsajid1989@gmail.com>
  * @copyright Ahmad Sajid
- * @RouteResource("Restaurants")
+ * @codeCoverageIgnore
+ *
  */
 class RestaurantsController extends Controller
 {

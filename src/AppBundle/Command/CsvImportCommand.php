@@ -76,7 +76,7 @@ EOT
         }
 
 
-        // checking if the mentioned dir is a directory and whether it exists
+         //checking if the mentioned dir is a directory and whether it exists
         if (!is_dir($targetArg)) {
             $targetArg = (isset($baseDir) ? $baseDir : $this->getContainer()->getParameter('kernel.project_dir')).'/'.$targetArg;
 
@@ -152,10 +152,7 @@ EOT
 
             foreach ($records as $record) {
 
-
-
                 $io->progressAdvance();
-
 
                 $lat = (float)($record['latitude']);
                 $lon = (float)($record['longitude']);
@@ -183,7 +180,6 @@ EOT
                     $ratingAverage = null;
                     $io->warning(sprintf("wrong rating average value skipping this field of restaurant id %s", $record['id']));
                 }
-
 
                 try {
                     $restaurant = new Restaurants();
@@ -219,8 +215,6 @@ EOT
                     $io->error(sprintf("error occurred during import %s,", $e->getMessage()));
                 }
             }
-
-
 
             $io->progressFinish();
 

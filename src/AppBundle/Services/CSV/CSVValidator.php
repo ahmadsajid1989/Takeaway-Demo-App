@@ -4,14 +4,8 @@
 namespace AppBundle\Services\CSV;
 
 
-use Deblan\Csv\CsvParser;
-use Deblan\CsvValidator\Validator;
-use finfo;
+
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-
-
-
 /**
  * Class CSVValidator
  * @package AppBundle\Services\CSV
@@ -23,15 +17,13 @@ class CSVValidator
      * @param $file
      *
      * @return bool
+     * @throws \Exception
      */
     public function validateFile($file)
     {
 
         if (!file_exists($file)) {
-            throw new FileNotFoundException("Either files doesn't exist or not found");
-        }
-        if($file == '') {
-            throw new FileNotFoundException("Either files doesn't exist or not found");
+            throw new \Exception("Either files doesn't exist or not found");
         }
 
         $mimeType = mime_content_type($file);
@@ -62,6 +54,10 @@ class CSVValidator
      * @return bool
      */
     public function validateHeader($file) {
+
+        if(!$file){
+            return false;
+        }
 
         $csv = array_map("str_getcsv", file($file,FILE_SKIP_EMPTY_LINES));
 
