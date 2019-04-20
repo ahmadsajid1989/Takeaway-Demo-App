@@ -14,10 +14,12 @@ use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Restaurants;
 use Swagger\Annotations as SWG;
+use JMS\Serializer\SerializationContext;
 
 
 
@@ -67,6 +69,8 @@ class RestaurantsController extends Controller
      * @param ParamFetcherInterface $paramFetcher
      *
      *
+     * @param Request $request
+     *
      * @return array| Response
      *
      * @View(serializerEnableMaxDepthChecks=true)
@@ -78,9 +82,8 @@ class RestaurantsController extends Controller
      * @QueryParam(name="filters", nullable=true,  description="Filter by fields. Must be an array ie. &filters[name]=The Nightshop")
      */
 
-    public function getAction(ParamFetcherInterface $paramFetcher)
+    public function getAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
-
         $offset = null == $paramFetcher->get('offset') ? 0 : $paramFetcher->get('offset');
         $limit = $paramFetcher->get('limit');
         $order_by_open = array('open' => 'DESC');
@@ -92,8 +95,9 @@ class RestaurantsController extends Controller
 
         if($restaurants) {
 
+            $version = $request->get('version') =='v5.12.300' ? 1: 1.1;
             $data['payload'] = $restaurants;
-            $response = $this->serialize($data);
+            $response = $this->serialize($data,$version);
             return new Response($response, Response::HTTP_OK);
         }
 
@@ -105,9 +109,9 @@ class RestaurantsController extends Controller
      *
      * @return mixed|string
      */
-    private function serialize($data)
+    private function serialize($data,$version)
     {
         return $this->get('jms_serializer')
-            ->serialize($data, 'json');
+            ->serialize($data, 'json', SerializationContext::create()->setVersion($version));
     }
 }

@@ -72,6 +72,49 @@ class ApiTest extends DataFixtureTest
 
     }
 
+    public function testVersionResponse() {
+
+        $baseUrl = getenv('TEST_BASE_URL');
+        $client = new \GuzzleHttp\Client([
+            'base_uri' => $baseUrl,
+            'defaults' => [
+                'exceptions' => false
+            ]
+        ]);
+
+        $response = $client->get('api/restaurant?version=v5.12.300');
+        $this->assertEquals(200, $response->getStatusCode());
+        $responseData = json_decode($response->getBody(), true);
+        $this->assertArrayHasKey('payload', $responseData);
+
+        foreach ($responseData as $data) {
+
+            $this->assertArrayHasKey('RestaurantName', $data[0]);
+        }
+
+    }
+
+    public function testDefaultVersionResponse() {
+
+        $baseUrl = getenv('TEST_BASE_URL');
+        $client = new \GuzzleHttp\Client([
+            'base_uri' => $baseUrl,
+            'defaults' => [
+                'exceptions' => false
+            ]
+        ]);
+
+        $response = $client->get('api/restaurant?version=v5');
+        $this->assertEquals(200, $response->getStatusCode());
+        $responseData = json_decode($response->getBody(), true);
+        $this->assertArrayHasKey('payload', $responseData);
+
+        foreach ($responseData as $data) {
+
+            $this->assertArrayHasKey('name', $data[0]);
+        }
+
+    }
 
 
 }

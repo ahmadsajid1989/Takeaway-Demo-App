@@ -1,6 +1,18 @@
 AppBundle\Entity\Restaurants:
   exclusion_policy: none
+
+  virtual_properties:
+
+    getRestaurantName:
+      name: RestaurantName
+      serialized_name: RestaurantName
+      type: string
+      until_version: 1.0
+
   properties:
+
+    name:
+      since_version: 1.1
 
     created_at:
       expose: false

@@ -10,6 +10,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\AccessType;
+use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\Until;
 use Swagger\Annotations as SWG;
 
 /**
@@ -30,8 +32,18 @@ class Restaurants
     /**
      * @var string
      * @SWG\Property(description="restaurant name")
+     * @Since("1.1")
      */
     private $name;
+
+
+    /**
+     * @var string
+     *
+     * @Until("1.0.x")
+     */
+
+    private $RestaurantName;
 
     /**
      * @var string
@@ -151,26 +163,23 @@ class Restaurants
 
     /**
      * @param int $id
+     * @return void
      */
     public function setId(int $id): void
     {
         $this->id = $id;
     }
 
-
-
     /**
      * Set name
      *
      * @param string $name
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -178,7 +187,7 @@ class Restaurants
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -188,13 +197,11 @@ class Restaurants
      *
      * @param string $branch
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setBranch($branch)
+    public function setBranch(string $branch) :void
     {
         $this->branch = $branch;
-
-        return $this;
     }
 
     /**
@@ -202,23 +209,19 @@ class Restaurants
      *
      * @return string
      */
-    public function getBranch()
+    public function getBranch(): ?string
     {
         return $this->branch;
     }
 
+
     /**
-     * Set phone
-     *
-     * @param integer $phone
-     *
-     * @return Restaurants
+     * @param int $phone
+     * @return void
      */
-    public function setPhone($phone)
+    public function setPhone(int $phone): void
     {
         $this->phone = $phone;
-
-        return $this;
     }
 
     /**
@@ -226,7 +229,7 @@ class Restaurants
      *
      * @return integer
      */
-    public function getPhone()
+    public function getPhone(): int
     {
         return $this->phone;
     }
@@ -236,13 +239,11 @@ class Restaurants
      *
      * @param string $email
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setEmail($email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -250,7 +251,7 @@ class Restaurants
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail() : string
     {
         return $this->email;
     }
@@ -260,13 +261,11 @@ class Restaurants
      *
      * @param string $logo
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setLogo($logo)
+    public function setLogo(string $logo):void
     {
         $this->logo = $logo;
-
-        return $this;
     }
 
     /**
@@ -274,7 +273,7 @@ class Restaurants
      *
      * @return string
      */
-    public function getLogo()
+    public function getLogo() : string
     {
         return $this->logo;
     }
@@ -284,13 +283,12 @@ class Restaurants
      *
      * @param string $address
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setAddress($address)
+    public function setAddress(string $address): void
     {
         $this->address = $address;
 
-        return $this;
     }
 
     /**
@@ -298,7 +296,7 @@ class Restaurants
      *
      * @return string
      */
-    public function getAddress()
+    public function getAddress() : string
     {
         return $this->address;
     }
@@ -308,13 +306,11 @@ class Restaurants
      *
      * @param string $housenumber
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setHousenumber($housenumber)
+    public function setHousenumber(string $housenumber): void
     {
         $this->housenumber = $housenumber;
-
-        return $this;
     }
 
     /**
@@ -322,7 +318,7 @@ class Restaurants
      *
      * @return string
      */
-    public function getHousenumber()
+    public function getHousenumber() : string
     {
         return $this->housenumber;
     }
@@ -332,13 +328,11 @@ class Restaurants
      *
      * @param string $postcode
      *
-     * @return Restaurants
+     * @return void
      */
-    public function setPostcode($postcode)
+    public function setPostcode(string $postcode): void
     {
         $this->postcode = $postcode;
-
-        return $this;
     }
 
     /**
@@ -346,7 +340,7 @@ class Restaurants
      *
      * @return string
      */
-    public function getPostcode()
+    public function getPostcode() : ?string
     {
         return $this->postcode;
     }
@@ -702,7 +696,21 @@ class Restaurants
         $this->updated_at = new \DateTime();
     }
 
+    /**
+     * @return string
+     */
+    public function getRestaurantName(): string
+    {
+        return $this->name;
+    }
 
+    /**
+     * @param string $RestaurantName
+     */
+    public function setRestaurantName(string $RestaurantName): void
+    {
+        $this->name = $RestaurantName;
+    }
 
 
 }

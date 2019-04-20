@@ -139,3 +139,91 @@ http://127.0.0.1:8000/app_dev.php/api/restaurant?filters[name]=Kerklaan Express
 ``` 
 
 This will give you a payload of this queried restaurant. of course it's not ideal solution for for searching, we could use elastic search or sphinx to make the search more efficient and bring result with suggestive search, mis spelled search etc.
+
+Extras:
+------
+
+Bonus Assignment:
+
+This api supports visioning by default. if you do not put 
+
+```http request
+?version
+``` 
+
+in the query param the application properties will return its default result. This application supports versions in this order:
+
+```php
+- query
+- custom_header
+- media_type
+```
+
+query has been implemented others have no effect for now. 
+
+As per requirement, name property in Restaurant class has versioning. if you mention:
+
+```http request
+?version=v5.12.300
+```
+
+in your request, the api will return,
+
+```json
+{
+    "RestaurantName": "La Gondolina",
+    "id": 98001223,
+    "branch": "",
+    "phone": 641079539,
+    "email": "info@lagondolina.nl",
+    "logo": "/nl/3/logo.png",
+    "address": "Karperweg",
+    "housenumber": "3 hs",
+    "postcode": "1075LA",
+    "city": "Amsterdam",
+    "latitude": 52.3486912,
+    "longitude": 4.8570568,
+    "url": "lagondolina",
+    "open": 2,
+    "best_match": 218,
+    "newest_score": 1685,
+    "rating_average": 9,
+    "popularity": 91,
+    "average_product_price": 10.93,
+    "delivery_costs": 6.57,
+    "minimum_order_amount": 6.57
+ }
+```
+
+in all other cases the api will return :
+
+```json
+{
+    "id": 98001223,
+    "name": "La Gondolina",
+    "branch": "",
+    "phone": 641079539,
+    "email": "info@lagondolina.nl",
+    "logo": "/nl/3/logo.png",
+    "address": "Karperweg",
+    "housenumber": "3 hs",
+    "postcode": "1075LA",
+    "city": "Amsterdam",
+    "latitude": 52.3486912,
+    "longitude": 4.8570568,
+    "url": "lagondolina",
+    "open": 2,
+    "best_match": 218,
+    "newest_score": 1685,
+    "rating_average": 9,
+    "popularity": 91,
+    "average_product_price": 10.93,
+    "delivery_costs": 6.57,
+    "minimum_order_amount": 6.57
+}
+```
+
+Code Coverage Report:
+--------------------
+
+The code coverage report can be found in the coverage directory, in HTML format.
