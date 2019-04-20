@@ -145,7 +145,7 @@ Extras:
 
 Bonus Assignment:
 
-This api supports visioning by default. if you do not put 
+This api supports versioning by default. if you do not put 
 
 ```http request
 ?version
@@ -227,3 +227,24 @@ Code Coverage Report:
 --------------------
 
 The code coverage report can be found in the coverage directory, in HTML format.
+
+Unit Tests:
+-----------
+To run the test case, please use this command:
+
+````bash
+./vendor/bin/phpunit
+````
+
+
+Note:
+-----
+
+The unit testing configuration has dependency of its base test url. by default the url is set to:
+
+````php
+#phpunit.xml.dist
+ <env name="TEST_BASE_URL" value="http://127.0.0.1:8000" />
+````
+
+if you run the app in another port or ip. you need to change the value accordingly. otherwise test will generate error.
