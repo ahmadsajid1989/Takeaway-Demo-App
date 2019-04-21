@@ -90,11 +90,15 @@ class RestaurantsController extends Controller
         $order_by = null == $paramFetcher->get('order_by') ?  $order_by_open = array('open' => 'DESC') : array_merge($order_by_open,$paramFetcher->get('order_by'));
         $filters = null == $paramFetcher->get('filters') ? [] : $paramFetcher->get('filters');
 
-        $em = $this->getDoctrine()->getManager();
-        $restaurants = $em->getRepository("AppBundle:Restaurants")->findBy($filters,$order_by,$limit,$offset);
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $restaurants = $em->getRepository("AppBundle:Restaurants")->findBy($filters, $order_by, $limit, $offset);
+        } catch (\Exception $e) {
+
+            return new JsonResponse(['payload'=>['message' =>$e->getMessage(),'code'=> Response::HTTP_BAD_REQUEST]], Response::HTTP_BAD_REQUEST);
+        }
 
         if($restaurants) {
-
             $version = $request->get('version') =='v5.12.300' ? 1: 1.1;
             $data['payload'] = $restaurants;
             $response = $this->serialize($data,$version);

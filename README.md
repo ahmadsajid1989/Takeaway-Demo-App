@@ -104,8 +104,16 @@ you will see the list of restaurants which we imported earlier. This application
 http://127.0.0.1:8000/app_dev.php/api/doc
 ```
 
-To keep the application very simple and easy to manage, we will be using only end point for our current requirement.
+To keep the application very simple and easy to manage, we will be using only end point for our current requirement. The default limit of result is 20, you can use:
 
+```http request
+?limit=40
+```
+to increase the limit. also to paginate you can use offset with limit. for example:
+
+```http request
+http://127.0.0.1:8000/app_dev.php/api/restaurant?limit=5&offset=10
+```
 The initial requirement for this assignment are:
 
 Use the following priority of the sorting (from the highest to the lowest priority):
