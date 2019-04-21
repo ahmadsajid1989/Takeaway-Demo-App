@@ -5,7 +5,7 @@ This is a demo app created as an homework for takeaway.
 
 * [Installation](#installation)
     * [Importing Data](#importing-data)
-* [Using](#usage)
+* [Usage](#usage)
 * [API](#api)
 * [Extras](#extras)
     * [Bonus Assignment](#bonus-assignment)
