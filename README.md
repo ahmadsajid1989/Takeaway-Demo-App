@@ -165,6 +165,16 @@ http://127.0.0.1:8000/api/restaurant?order_by[newest_score]=DESC
 ```
 and so on..
 
+accepted parameters for sorting are :
+
+* best_match
+* newest_score
+* rating_average
+* popularity
+* average_product_price
+* delivery_costs
+* minimum_order_amount
+
 you can order by ASC( ascending ) or by DESC(descending). Also you can use combination of multiple params as a query parameter to sort your result.
 
 * To search restaurant by name you can use filters in query parameter. for example:
