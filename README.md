@@ -95,13 +95,13 @@ Hurray!! your api is now ready to serve your requests.
 now from your browser/ postman go to :
 
 ```http request
-http://127.0.0.1:8000/app_dev.php/api/restaurant/
+http://127.0.0.1:8000/api/restaurant/
 ```
 
 you will see the list of restaurants which we imported earlier. This application comes with a api documentation as well. you can visit:
 
 ```http request
-http://127.0.0.1:8000/app_dev.php/api/doc
+http://127.0.0.1:8000/api/doc
 ```
 
 To keep the application very simple and easy to manage, we will be using only end point for our current requirement. The default limit of result is 20, you can use:
@@ -112,7 +112,7 @@ To keep the application very simple and easy to manage, we will be using only en
 to increase the limit. also to paginate you can use offset with limit. for example:
 
 ```http request
-http://127.0.0.1:8000/app_dev.php/api/restaurant?limit=5&offset=10
+http://127.0.0.1:8000/api/restaurant?limit=5&offset=10
 ```
 The initial requirement for this assignment are:
 
@@ -129,13 +129,13 @@ The api will list restaurants by default with opening state ( 2 as open, 1 as or
 For sorting with best match, use this endpoint:
 
 ```http request
-http://127.0.0.1:8000/app_dev.php/api/restaurant?order_by[best_match]=DESC
+http://127.0.0.1:8000/api/restaurant?order_by[best_match]=DESC
 ```
 
 Then to order by newest, use this end point:
 
 ```http request
-http://127.0.0.1:8000/app_dev.php/api/restaurant?order_by[newest_score]=DESC
+http://127.0.0.1:8000/api/restaurant?order_by[newest_score]=DESC
 ```
 
 and so on.. you can order by ASC( ascending ) or by DESC(descending). Also you can use combination of multiple params as a query parameter to sort your result.
@@ -143,7 +143,7 @@ and so on.. you can order by ASC( ascending ) or by DESC(descending). Also you c
 To search restaurant by name you can use filters in query parameter. for example:
 
 ```http request
-http://127.0.0.1:8000/app_dev.php/api/restaurant?filters[name]=Kerklaan Express
+http://127.0.0.1:8000/api/restaurant?filters[name]=Kerklaan Express
 ``` 
 
 This will give you a payload of this queried restaurant. of course it's not ideal solution for for searching, we could use elastic search or sphinx to make the search more efficient and bring result with suggestive search, mis spelled search etc.
